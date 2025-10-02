@@ -6,3 +6,4 @@ WARNING: module 'DataFlow' has been deprecated and may be removed in future (Det
 WARNING: module 'DataFlow' has been deprecated and may be removed in future (DetectAndHandleMemoryAllocationErrors.ql:92,35-43)
 WARNING: module 'DataFlow' has been deprecated and may be removed in future (DetectAndHandleMemoryAllocationErrors.ql:97,38-46)
 | test.cpp:24:7:24:34 | new | nothrow new allocation of $@ returns here without a subsequent check to see whether the pointer is valid. | test.cpp:24:7:24:34 | new | StructA * |
+| test.cpp:35:17:35:44 | new | nothrow new allocation of $@ returns here without a subsequent check to see whether the pointer is valid. | test.cpp:35:17:35:44 | new | StructA * |

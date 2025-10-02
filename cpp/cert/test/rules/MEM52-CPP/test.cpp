@@ -31,16 +31,21 @@ int test_equality_conditional(StructA *a, std::size_t size) {
   return (a->data == nullptr) ? -1 : 0;
 }
 
-StructA *allocate_without_check() {
+StructA *allocate_without_check1() {
+  StructA *a1 = new (std::nothrow) StructA{};
+  return a1;
+}
+
+StructA *allocate_without_check2() {
   StructA *a1 = new (std::nothrow) StructA{};
   return a1;
 }
 
 bool test_non_local() {
-  StructA *a1 = allocate_without_check(); // NON_COMPLIANT - not checked
+  StructA *a1 = allocate_without_check1(); // NON_COMPLIANT - not checked
   use(a1);
 
-  StructA *a2 = allocate_without_check(); // COMPLIANT
+  StructA *a2 = allocate_without_check2(); // COMPLIANT
   if (!a2) {
     return false;
   }

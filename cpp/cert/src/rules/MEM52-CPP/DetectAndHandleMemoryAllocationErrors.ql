@@ -84,7 +84,9 @@ module NoThrowNewErrorCheckConfig implements DataFlow::ConfigSig {
     source.asExpr() instanceof NotWrappedNoThrowAllocExpr
   }
 
-  predicate isSink(DataFlow::Node sink) { sink.asExpr() = any(GuardCondition gc).getAChild*() }
+  predicate isSink(DataFlow::Node sink) {
+    sink.asExpr().(GuardCondition).valueControlsEdge(_, _, _)
+  }
 }
 
 module NoThrowNewErrorCheckFlow = DataFlow::Global<NoThrowNewErrorCheckConfig>;
